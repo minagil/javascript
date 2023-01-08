@@ -1,3 +1,4 @@
+// https://codepen.io/goldigo/pen/YzXogYR
 const Slider = function(){
   const slider = document.querySelector('#slider');
   const sliderContent = document.querySelector('.slider-content');
@@ -16,7 +17,6 @@ const Slider = function(){
     update: function(value){
       this.position.current = value;
       this.offset = -value;
-      console.log(this.offset)
     }
   }
 

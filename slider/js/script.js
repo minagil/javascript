@@ -53,6 +53,7 @@ const Slider = function(){
 
   function _updateControlsInfo(){
     const {current, min, max} = itemsInfo.position;
+    controlsInfo.prevButtonDisabled = current > min ? false : true;
     controlsInfo.nextButtonDisabled = current < max ? false : true;
   }
 
@@ -61,13 +62,20 @@ const Slider = function(){
     createArrows();
 
     function createArrows(){
+      const dValueLeftArrow = "M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z";
       const dValueRightArrow = "M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z";
+      const leftArrowSVG = createSVG(dValueLeftArrow);
       const rightArrowSVG = createSVG(dValueRightArrow);
+
+      leftArrow = createHTMLElement('div', 'prev-arrow');
+      leftArrow.append(leftArrowSVG);
+      leftArrow.addEventListener('click', () => updateItemsInfo(itemsInfo.position.current - 1));
+
       rightArrow = createHTMLElement("div", "next-arrow");
       rightArrow.append(rightArrowSVG);
       rightArrow.addEventListener('click', () => updateItemsInfo(itemsInfo.position.current + 1));
       
-      sliderContentControls.append(rightArrow);
+      sliderContentControls.append(leftArrow, rightArrow);
 
 
       function createSVG(dValue, color="currentColor"){
@@ -100,8 +108,9 @@ const Slider = function(){
   }
 
   function _render(){
-    const {nextButtonDisabled} = controlsInfo;
+    const {prevButtonDisabled,nextButtonDisabled} = controlsInfo;
     let controlArray = [
+      {element: leftArrow, className: "d-none", disabled: prevButtonDisabled},
       {element: rightArrow, className: "d-none", disabled: nextButtonDisabled}
     ];
     setClass(controlArray);

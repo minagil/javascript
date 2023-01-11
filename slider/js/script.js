@@ -5,6 +5,8 @@ const Slider = function(){
   const sliderWrapper = document.querySelector('.slider-content-wrapper');
   const elements = document.querySelectorAll('.slider-content__item');
   const sliderContentControls = createHTMLElement("div", "slider-content__controls");
+  let dotsWrapper = null;
+  let intervalId = null;
 
   const itemsInfo = {
     offset: 0,
@@ -41,10 +43,11 @@ const Slider = function(){
       if(props && props.buttons){
       }
       if(props && props.dots){
+        controlsInfo.dotsEnabled = true;
       }
 
       _updateControlsInfo();
-      _createControls();
+      _createControls(controlsInfo.dotsEnabled);
       _render();
     }else{
       console.log('slider/slider-content/slider-wrapper/slider-content__item')
@@ -57,9 +60,11 @@ const Slider = function(){
     controlsInfo.nextButtonDisabled = current < max ? false : true;
   }
 
-  function _createControls(){
+  function _createControls(dots = false){
     sliderContent.append(sliderContentControls);
+
     createArrows();
+    dots ? createDots() : null;
 
     function createArrows(){
       const dValueLeftArrow = "M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z";
@@ -77,7 +82,6 @@ const Slider = function(){
       
       sliderContentControls.append(leftArrow, rightArrow);
 
-
       function createSVG(dValue, color="currentColor"){
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 				svg.setAttribute("viewBox", "0 0 256 512");
@@ -88,6 +92,21 @@ const Slider = function(){
 				return svg;
       }
     }
+
+    function createDots(){
+      dotsWrapper = createHTMLElement('div','dots');
+      console.log('ggdgdgdg')
+      for(let i=0; i<itemsInfo.position.max + 1; i++){
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dot.addEventListener('click', function(){
+          updateItemsInfo(i);
+        });
+        dotsWrapper.append(dot);
+      }
+      sliderContentControls.append(dotsWrapper);
+    }
+    
   }
 
   function setClass(options){
@@ -116,6 +135,13 @@ const Slider = function(){
     setClass(controlArray);
 
     sliderWrapper.style.transform = `translateX(${itemsInfo.offset*100}%)`;
+
+    if(controlsInfo.dotsEnabled){
+      if(document.querySelector('.dot--active')){
+        document.querySelector('.dot--active').classList.remove('dot--active');
+      }
+      dotsWrapper.children[itemsInfo.position.current].classList.add('dot--active');
+    }
   }
   
   function _slideItem(){
@@ -139,3 +165,5 @@ slide1.init({
   buttons: true,
   dots: true
 });
+
+

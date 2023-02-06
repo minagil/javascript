@@ -1,0 +1,42 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Poppins:wght@300&display=swap');
+
+*{margin:0;padding:0;}
+html,body{width:100%;height:100%; font-size:62.5%;}
+html{font-family:'Noto Sans KR', '나눔고딕', 'NanumGothic', 'Nanum Gothic', '돋움', dotum, sans-serif; -webkit-font-smoothing: antialiased;}
+body{*word-break:break-all;-ms-word-break:break-all; font-family:'Noto Sans KR', '나눔고딕', 'NanumGothic', 'Nanum Gothic', '돋움',dotum,sans-serif; -webkit-text-size-adjust: 100% !important;-moz-text-size-adjust: 100% !important;-ms-text-size-adjust: 100% !important;}
+body,h1,h2,h3,h4,h5,h6,th,td,input,textarea,select,option{color:#555;font-family:'Noto Sans KR', '나눔고딕', 'NanumGothic', 'Nanum Gothic', '돋움',dotum,sans-serif;font-size:100%;font-weight:normal}
+br{font-family:initial;} 
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section,svg {display: block;}
+table {border-collapse: collapse; border-spacing: 0;}
+img,fieldset,iframe{border:0 none}
+ul,ol,li{list-style:none}
+em,address{font-style:normal}
+img,input,select,textarea{vertical-align:middle}
+input{-webkit-appearance: none; -webkit-border-radius: 0;}
+a{color:inherit;text-decoration:none;cursor:pointer}
+a:hover{color:inherit; text-decoration:none}
+button,label{cursor:pointer;}
+button{background:0;border:0;outline:0;font-size:inherit;font-weight:inherit;font-family:inherit}
+button img{left:-3px;*left:auto}
+html:first-child select{height:20px;padding-right:6px}
+option{padding-right:6px}
+textarea{overflow:auto;*margin:-1px 0;padding-right:1px}
+.blind, legend, caption{position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px);}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
+hr{display:none}
+legend{*width:0}
+:root legend{margin-top:-1px;font-size:0;line-height:0}
+caption{*line-height:0}
+sub {font-size:10px;}
+.clear:after {clear:both;content:'';display:block;}
+#bg{position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:none;z-index:1001;}
+div.ie_alert_text {display:none;position: fixed;top: 0;left: 0;width: 100%;height: 50px;background: #ddd;z-index: 10000;text-align: center;padding-top: 10px;font-size: 13px;font-family: 'Noto Sans KR', sans-serif;}
+#skip-nav {font-size: 16px;line-height: 40px;position: fixed;z-index: 100000;top: -40px;left: 0;width: 100%;-webkit-transition: .4s;transition: .4s;text-align: center;color: #fff;background: rgba(0,0,0,.6);}
+#skip-nav:focus{top:0}
+.e_{overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:1;-webkit-box-orient:vertical;word-wrap:break-word;-webkit-box-sizing:border-box;box-sizing:border-box;display:-webkit-box}
+.blind {overflow:  hidden;border: 0;margin: -1px;width: 1px;height: 1px;clip: rect(1px, 1px, 1px, 1px);}
+
+[class*="con-"][class*="-width1"] {position: relative;max-width: 1480px;width: 90%;margin: 0 auto;}

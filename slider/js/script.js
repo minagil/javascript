@@ -134,7 +134,7 @@ const Slider = function(){
     ];
     setClass(controlArray);
 
-    sliderWrapper.style.transform = `translateX(${itemsInfo.offset*100}%)`;
+    sliderWrapper.style.transform = `translateX(${itemsInfo.offset*100}%   )`;
 
     if(controlsInfo.dotsEnabled){
       if(document.querySelector('.dot--active')){
